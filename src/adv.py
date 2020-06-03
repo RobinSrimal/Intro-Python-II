@@ -1,24 +1,25 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons",[]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""",["beer"]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""",["sword"] ),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""",["painting"]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""",["armor"]),
 }
 
 
@@ -49,3 +50,24 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+
+if __name__ == "__main__":
+
+    print("Welcome, adventurer. You are at the beginning .... But great treasures await ....You can move through the maze")
+    print("by typing n for North, s for South, w for West and e for East")
+    
+    name = input("But first please tell me your name: ")
+
+    location = room['outside']
+    
+    player = Player(name, location,  ["gun"])
+    
+    while True:
+    
+        player.status()
+
+        player.pick_or_drop()
+    
+        player.move()
+    
