@@ -11,6 +11,7 @@ class Player:
         self.name = name
         self.location = location
         self.items = items
+
     def status(self):
         
         print(f"You are currently here: {self.location.name}")
@@ -47,9 +48,6 @@ class Player:
             else:
 
                 decision = input("""would you like to pick something up or drop something?: """)
-
-                
-
 
 
         elif decision == "no":
